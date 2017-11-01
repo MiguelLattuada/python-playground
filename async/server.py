@@ -1,5 +1,5 @@
 import asyncio
-import socket
+import helper.http as http_helper
 
 
 class ServerWrapper:
@@ -39,10 +39,8 @@ class ServerWrapper:
         :param asyncio.StreamWriter client_writer:
         :return: None
         """
-        print('New user connected')
-        await asyncio.sleep(10)
-        data = 'Data...'.encode('utf-8')
-        client_writer.write(data)
+        data = http_helper.status_ok_response('<h1>Hello world!<h1>')
+        client_writer.write(data.encode('utf-8'))
         client_writer.close()
 
     @staticmethod
