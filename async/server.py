@@ -39,6 +39,14 @@ class ServerWrapper:
         :param asyncio.StreamWriter client_writer:
         :return: None
         """
+
+        # TODO: Handle incoming connections with an async handler so we can receive multiple connections without blocking
+
+        incoming_data = await client_reader.read(2048)
+
+        print('BROWSER REQUEST DATA')
+        print(incoming_data)
+
         data = http_helper.status_ok_response('<h1>Hello world!<h1>')
         client_writer.write(data.encode('utf-8'))
         client_writer.close()

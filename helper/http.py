@@ -42,7 +42,8 @@ def status_ok_response(response_body):
         header_top=get_header_start(STATUS_OK),
         line_break=l_b,
         header_fields=get_header_fields({
-            'Content-Type': 'text/html; charset=utf-8'
+            'Content-Type': 'text/html; charset=utf-8',
+            'Connection': 'keep-alive'
         }),
         body=response_body
     )
